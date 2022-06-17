@@ -80,4 +80,52 @@ class Grafo():
                 print("Nodo ", clave, ":", self.m_lista_adyacencia[clave])
         except Exception as e:
             print(e)
+    def dfs(self, inicio, objetivo, ruta = [], visitado = set()):
+        """
+        El método DFS permitirá imprimir el recorrdio generado mediant un nodo inicial y un nodo objetivo o final.
+        A su vez, generará los nodos que fueron visitados y el recorrido que se tomo para llegar hacia ese
+        nodo objetivo.
+        Parámetros:
+            inicio : int
+                Nodo inicial
+            objetivo : int
+                Nodo objetivo
+            ruta : list
+                Lista que contiene los nodos que fueron visitados
+            visitado : set
+                Lista que contiene los nodos que fueron visitados
+        Retorna:
+            Nada
+        """
     
+        # Se agrega el nodo inicial a la lista de visitados
+        visitado.add(inicio)
+        # Se agrega el nodo inicial a la lista de ruta
+        ruta.append(inicio)
+      
+        try:
+            # Si el nodo inicial es el objetivo se imprime el recorrido
+            if inicio == objetivo:
+               
+                return ruta
+
+            # Se recorre la lista de adyacencia del nodo inicial
+            for(vecino, peso) in self.m_lista_adyacencia[inicio]:
+                # Si el nodo vecino no ha sido visitado se llama al metodo dfs con el nodo vecino como inicio
+                if vecino not in visitado:
+                    #se asigna a la variable resultado el nodo vecino, el objetivo, la ruta y la lista de nodos visitados
+                    resultado = self.dfs(vecino, objetivo, ruta, visitado) 
+                    # Si el resultado no es nulo se retorna el resultado
+                    if resultado is not None:
+                        #Retorna resultado
+                        return resultado 
+
+        except Exception as e:
+            print(e)
+
+        try:
+            # Si el resultado es nulo se retorna None        
+            ruta.pop() 
+            return None
+        except Exception as e:
+            print(e)
