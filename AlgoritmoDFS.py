@@ -129,3 +129,18 @@ class Grafo():
             return None
         except Exception as e:
             print(e)
+if __name__ == "__main__":
+    
+    print("Caso de Prueba 1")
+    grafo1 = Grafo(5, dirigido=False)#Se instancia la clase Grafo
+    grafo1.agregar_borde(0, 1) # Se agrega los bordes del grafo con valor peso = 1 por defecto
+    grafo1.agregar_borde(0, 2) # Se agrega los bordes del grafo con valor peso = 1 por defecto
+    grafo1.agregar_borde(1, 3) # Se agrega los bordes del grafo con valor peso = 1 por defecto
+    grafo1.agregar_borde(2, 3) # Se agrega los bordes del grafo con valor peso = 1 por defecto
+    grafo1.agregar_borde(3, 4) # Se agrega los bordes del grafo con valor peso = 1 por defecto
+
+    grafo1.Imprimir_lista_adyacencia() #Imprime la lista de adyacencia
+
+    ruta_transversal1 = [] # Se inicializa la variable ruta_transversal
+    ruta_transversal1 = grafo1.dfs(0, 3) # Se almacena el recorrido dfs en la variable ruta_transversal
+    print(f"La ruta transversal desde el nodo 0 al nodo 3 es {ruta_transversal1}") #Imprime el recorriodo dfs
