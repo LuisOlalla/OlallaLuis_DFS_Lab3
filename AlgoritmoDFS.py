@@ -41,4 +41,30 @@ class Grafo():
             self.m_lista_adyacencia = {nodo: set() for nodo in self.m_nodos}
         except Exception as e:
             print(e)
+    def agregar_borde(self,nodo1,nodo2,peso=1):
+        '''
+        Generar el método para añadir nodos al grafo
+        Parámetros:
+            nodo1 : int
+                Nodo que se va a añadir
+            nodo2 : int
+                Nodo que se va a añadir
+            peso : int
+                Peso que se le asigna al nodo
+        Retorna:
+            Nada
         
+        Generar un control de excepciones
+        try:
+            except:
+                print("Error")
+        '''
+        try:
+            #Se añade el nodo 1 al nodo 2
+            self.m_lista_adyacencia[nodo1].add((nodo2,peso))
+            #Se añade el nodo 2 al nodo 1
+            if not self.m_dirigido:
+                self.m_lista_adyacencia[nodo2].add((nodo1,peso))
+        except Exception as e:
+            print(e)
+    
